@@ -1,4 +1,4 @@
-# Tamilein — Downloads
+# Playlist-Converter — Downloads
 
 **Playlists frei übertragen** zwischen Spotify, Deezer, TIDAL, YouTube Music und
 SoundCloud. Ohne Limit, ohne Konto bei einem Zwischendienst — alles läuft lokal
@@ -29,6 +29,6 @@ Dafür ist keine Anmeldung nötig.
 
 ## Lizenz und Quellcode
 
-Tamilein steht unter der **GPL-3.0-or-later**. Wer eines der Programme von hier
+Playlist-Converter steht unter der **GPL-3.0-or-later**. Wer eines der Programme von hier
 bekommt, hat damit Anspruch auf den zugehörigen Quellcode; er wird auf Anfrage
 über ein Issue in diesem Repository herausgegeben.
