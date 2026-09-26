@@ -1,0 +1,34 @@
+# Playlist-Converter
+
+> Free, local app for Linux, Windows and Android that transfers playlists and liked songs between Spotify, Deezer, TIDAL, YouTube Music and SoundCloud — no transfer limits, no third-party cloud service, logins stay on the user's device. This repository (BjoernHa/Playlist-Converter-Tamilein) publishes only the installation files; the user interface is in German. Project name: Tamilein. License: GPL-3.0-or-later (source code on request).
+
+## Core features
+
+- Any direction between Spotify, Deezer, TIDAL, YouTube Music and SoundCloud; whole playlists and liked songs, no size limit.
+- Matching: identical ISRC first, then fuzzy matching on title, artist, duration and version tags (live, remix, karaoke, instrumental). Only safe matches are accepted automatically; the rest goes to a review step with 2–3 alternatives, plus "accept all above X %".
+- Spotify without Premium: as source via file import (Spicetify data-porter export, Spotify data export ZIP, CSV such as Exportify, plain text); as target by generating a JSON file for the Spicetify app data-porter.
+- Safety: JSON backup of the source before every transfer; name-collision handling (overwrite, skip, new with suffix); interrupted transfers resume without creating duplicate playlists.
+- Privacy: runs on 127.0.0.1; tokens stored encrypted (system keyring, Android Keystore or encrypted file); optional encrypted backup file of all connections to move them to another device.
+- Three standalone programs: Linux .deb, Windows installer (.exe, no admin rights), Android .apk (Python runs inside the app, no computer needed).
+- Built-in updates: checks for a newer release at start, no GitHub login required.
+- Not supported: Apple Music; automatic background sync.
+
+## Quickstart
+
+- Linux (Debian/Ubuntu/Mint): `curl -s https://api.github.com/repos/BjoernHa/Playlist-Converter-Tamilein/releases/latest | grep -o 'https://[^"]*_all\.deb' | xargs curl -LO && sudo apt install ./tamilein_*_all.deb && tamilein` — the app opens at http://127.0.0.1:8000.
+- Windows: download `Tamilein-<version>-Setup.exe` from the latest release and run it; start "Playlist-Converter" from the Start menu.
+- Android: download `tamilein-<version>.apk` from the latest release on the phone and install it.
+- In the app: connect services → choose source playlists → choose target and analyse → search songs → review uncertain matches → transfer.
+
+## Key files
+
+- [README.md](https://github.com/BjoernHa/Playlist-Converter-Tamilein/blob/main/README.md): overview, use cases, quickstart, comparison, FAQ
+- [AGENTS.md](https://github.com/BjoernHa/Playlist-Converter-Tamilein/blob/main/AGENTS.md): guide for autonomous agents (install, run, local HTTP API, safety rules)
+- [Latest release](https://github.com/BjoernHa/Playlist-Converter-Tamilein/releases/latest): installation files `tamilein_<version>_all.deb`, `Tamilein-<version>-Setup.exe`, `tamilein-<version>.apk`
+- [Releases API](https://api.github.com/repos/BjoernHa/Playlist-Converter-Tamilein/releases/latest): machine-readable list of the newest files
+
+## Optional
+
+- [Spicetify](https://spicetify.app): Spotify desktop client extension framework, needed only for Spotify without Premium
+- [data-porter](https://github.com/Prog-Jacob/spicetify-apps): Spicetify app that exports Spotify playlists and imports the file Playlist-Converter generates
+- [song.link / Odesli](https://odesli.co): public service used to look up Spotify track IDs for the Spotify file target
