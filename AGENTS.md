@@ -46,13 +46,19 @@ their behalf without asking.
 The UI talks to a local JSON API. It is **internal and may change between
 versions**; prefer guiding the user through the UI. Typical sequence:
 
-1. `GET /api/state` — services, connection state (`session == "ok"` means verified), selection, plan, job.
+1. `GET /api/state` — services, connection state (`session == "ok"` means verified; `dataporter: true` on Spotify means "connected for Dataporter", i.e. file mode without Premium), selection, plan, job.
 2. `POST /api/library/load` `{"source": "deezer"}` — returns a job; poll `GET /api/jobs/{job_id}` until `status != "running"`.
 3. `POST /api/selection` `{"target": "tidal", "playlist_ids": ["…"], "include_liked": false}`
 4. `POST /api/analyse` → job (writes a JSON backup, detects name collisions).
 5. `POST /api/match` → job (searches every song on the target).
 6. `GET /api/review` — uncertain matches; decisions via `POST /api/review/{index}/accept` or `/skip`.
 7. `POST /api/transfer` → job; the report is in `GET /api/state` → `report`.
+
+Spotify without Premium: `POST /api/providers/spotify/dataporter` `{"aktiv": true}`
+switches Spotify to file mode (source = import of a data-porter export via
+`POST /api/import`, target = one data-porter file).
+`POST /api/alles-trennen` `{"zugangsdaten": false}` disconnects **every** service
+and resets selection and plan — destructive; only on the user's explicit request.
 
 Cancel a running job with `POST /api/jobs/{job_id}/cancel`. On `127.0.0.1` no
 key is needed. With `--host 0.0.0.0` every request needs the access key shown at
@@ -70,10 +76,12 @@ start, and the Android app always uses one.
   requires the access key.
 - Deezer, YouTube Music and SoundCloud are connected through their websites'
   interfaces (unofficial). Respect the services' terms and rate limits.
-- Spotify without Premium cannot be written to directly. Choose Spotify as the
-  target anyway: the app generates a file for the Spicetify app
-  [data-porter](https://github.com/Prog-Jacob/spicetify-apps), which the user
-  imports in the Spotify desktop client.
+- Spotify without Premium cannot be written to directly. Connect it "for
+  Dataporter" and choose it as the target anyway: the app generates one file for
+  the Spicetify app [data-porter](https://github.com/Prog-Jacob/spicetify-apps),
+  which the user imports in the Spotify desktop client.
+- **Never disconnect services or reset the app** (`/api/alles-trennen`, logout
+  routes) unless the user explicitly asks for it.
 - Report outcomes honestly: the transfer report lists skipped songs and errors.
 
 ## Support

@@ -24,9 +24,11 @@ interface is in German.
 - **Using two services side by side** — copy selected playlists from Deezer to
   YouTube Music, from SoundCloud to Spotify, and so on (any direction between the
   five supported services).
-- **Spotify without Premium** — use Spotify as a *source* by importing an export
-  file, and as a *target* by generating a file for the Spicetify app
-  [data-porter](https://github.com/Prog-Jacob/spicetify-apps).
+- **Spotify without Premium** — tap *Verbinden für Dataporter* ("connect for
+  Dataporter") on the Spotify card: Spotify is then used through files of the
+  Spicetify app [data-porter](https://github.com/Prog-Jacob/spicetify-apps) —
+  as a *source* by importing its export (playlists and liked songs), as a
+  *target* by generating one file that data-porter imports.
 - **Large libraries** — online converters usually cap free transfers; this tool
   has no limits (its file import was tested with a real library of 434 playlists
   and 98,517 songs).
@@ -76,7 +78,7 @@ Then, in the app:
 | Access to your streaming accounts | stays on your device, stored encrypted | granted to the provider |
 | Matching | ISRC first, then title, artist, duration and version tags; uncertain matches go to a review step | varies |
 | Wrong-match protection | live/remix/karaoke/instrumental versions are never accepted automatically | varies |
-| Spotify without Premium | source via file import, target via Spicetify file | depends on the provider |
+| Spotify without Premium | "connect for Dataporter": source via data-porter export, target via one data-porter file | depends on the provider |
 | Backup before transfer | always (JSON, human-readable) | usually not |
 | Resume after interruption | yes, already created playlists are not duplicated | varies |
 | Price | free | full use usually needs a subscription |
@@ -94,15 +96,20 @@ Yes. There are no subscriptions, no limits and no ads.
 
 **Do I need Spotify Premium?**
 No. Since February 2026 Spotify only lets Premium users create the developer app
-needed for its Web API. Without Premium, Playlist-Converter reads Spotify
-playlists from an export file (Spicetify data-porter, Spotify's own data export,
-or a CSV such as Exportify) and writes to Spotify by generating a file that the
-Spicetify app data-porter imports in Spotify on a computer.
+needed for its Web API. Without Premium, tap *Verbinden für Dataporter* on the
+Spotify card. Playlist-Converter then reads Spotify playlists and liked songs
+from an export file (Spicetify data-porter, Spotify's own data export, or a CSV
+such as Exportify) and writes to Spotify by generating **one** file that the
+Spicetify app data-porter imports in Spotify on a computer (compact enough for
+data-porter's 20 MB limit even with ~100,000 songs).
 
 **How does it connect to Deezer, YouTube Music and SoundCloud?**
 These services no longer offer open API registration. The app uses the same
 interface as their websites; you paste one value from your browser (Deezer:
-the `arl` cookie, SoundCloud: `oauth_token`, YouTube Music: request headers).
+the `arl` cookie, SoundCloud: `oauth_token`, YouTube Music: the `browse`
+request — easiest via right-click → Copy → *Copy as cURL*; the app also accepts
+the selected request headers as Chrome or Firefox copy them (in the *Raw* view
+click *Show more* first, it stops after 3,000 characters), or just the cookie).
 The app marks this as unofficial — a change on the service's side can break it.
 TIDAL uses its official API with your own free developer app.
 
@@ -120,6 +127,11 @@ anyone except the music services themselves.
 **Can I move my logins to another device?**
 Yes — the app can save all connections into a password-protected, encrypted file
 and read it in on another device.
+
+**How do I disconnect everything?**
+At the top right, next to the help button, *Alle trennen* ("disconnect all") removes
+every login at once and resets selection and plan — optionally also the app
+credentials you entered. Backups and generated files stay.
 
 **What happens if a transfer is interrupted?**
 The plan is saved on disk. On the next start the app offers to continue;
@@ -158,5 +170,7 @@ deinem Gerät. Die Dateien liegen unter **[Releases](../../releases/latest)**:
 `.deb` für Linux Mint/Ubuntu/Debian (Doppelklick → „Paket installieren“),
 `…-Setup.exe` für Windows (Doppelklick, kein Administrator nötig) und `.apk` für
 Android (antippen, Installation aus dieser Quelle erlauben). Aktualisieren geht
-im Programm selbst, ohne Anmeldung. Lizenz: GPL-3.0-or-later; den Quellcode gibt
+im Programm selbst, ohne Anmeldung. Spotify ohne Premium: auf der Spotify-Karte
+„Verbinden für Dataporter“ — dann laufen Quelle und Ziel über Dateien der
+Spicetify-App data-porter. Lizenz: GPL-3.0-or-later; den Quellcode gibt
 es auf Anfrage über ein Issue.
