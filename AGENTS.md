@@ -10,7 +10,10 @@ operate Playlist-Converter on behalf of a user. For humans, see
   **no source code** — only `README.md`, `llms.txt`, this file and the
   [releases](https://github.com/BjoernHa/Playlist-Converter-Tamilein/releases/latest).
 - The app transfers playlists between Spotify, Deezer, TIDAL, YouTube Music and
-  SoundCloud. It runs locally; the user interface is German.
+  SoundCloud. It runs locally; the user interface is available in **English and
+  German** (language button at the top right; German is the default).
+- Deutsch: Leitfaden für Agenten, die Playlist-Converter für einen Nutzer
+  installieren oder bedienen. Die Regeln unten gelten unverändert.
 
 ## Install
 
@@ -46,7 +49,8 @@ their behalf without asking.
 The UI talks to a local JSON API. It is **internal and may change between
 versions**; prefer guiding the user through the UI. Typical sequence:
 
-1. `GET /api/state` — services, connection state (`session == "ok"` means verified; `dataporter: true` on Spotify means "connected without Premium", i.e. file mode), selection, plan, job.
+0. `POST /api/sprache` `{"sprache": "en"}` — switch the UI (and messages) to English; `"de"` for German. The choice is saved.
+1. `GET /api/state` — language (`sprache`), services, connection state (`session == "ok"` means verified; `dataporter: true` on Spotify means "connected without Premium", i.e. file mode), selection, plan, job.
 2. `POST /api/library/load` `{"source": "deezer"}` — returns a job; poll `GET /api/jobs/{job_id}` until `status != "running"`.
 3. `POST /api/selection` `{"target": "tidal", "playlist_ids": ["…"], "include_liked": false}`
 4. `POST /api/analyse` → job (writes a JSON backup, detects name collisions).

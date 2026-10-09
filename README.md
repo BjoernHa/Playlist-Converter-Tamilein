@@ -1,180 +1,128 @@
 # Playlist-Converter
 
-**Transfer playlists and liked songs between Spotify, Deezer, TIDAL, YouTube Music
-and SoundCloud — locally on your own device, with no transfer limits and no
-third-party cloud service.**
+**🇬🇧 Free playlist converter that runs on your own device: transfer playlists
+and liked songs between Spotify, Deezer, TIDAL, YouTube Music and SoundCloud —
+on Linux, Windows and Android, with no limits and no cloud.**
 
-Playlist-Converter (project name *Tamilein*) is a free desktop and mobile app for
-Linux, Windows and Android. It reads playlists from one music streaming service,
-finds each song on another service (ISRC first, then careful fuzzy matching) and
-creates the playlists there. Everything runs on your machine; your logins never
-leave it.
+**🇩🇪 Kostenloser Playlist-Konverter, der auf deinem eigenen Gerät läuft:
+Playlists und Lieblingssongs zwischen Spotify, Deezer, TIDAL, YouTube Music und
+SoundCloud übertragen — unter Linux, Windows und Android, ohne Limit und ohne
+Cloud.**
 
-This repository contains **only the ready-to-install release files**. The user
-interface is in German.
+➡️ **[Download / Herunterladen](../../releases/latest)** — `.deb` (Linux) ·
+`…-Setup.exe` (Windows) · `.apk` (Android) · [English](#english) ·
+[Deutsch](#deutsch)
 
-➡️ **Download: [latest release](../../releases/latest)** (`.deb`, `.exe`, `.apk`)
+This repository holds only the release files of Playlist-Converter (project
+name *Tamilein*). The app speaks **English and German** (language button at the
+top right). License: GPL-3.0-or-later.
 
 ---
 
-## When to use this tool / Use Cases
+## English
 
-- **Switching streaming services** — move your whole library (hundreds of
-  playlists, tens of thousands of songs) from e.g. Spotify to TIDAL or Deezer.
-- **Using two services side by side** — copy selected playlists from Deezer to
-  YouTube Music, from SoundCloud to Spotify, and so on (any direction between the
-  five supported services).
-- **Spotify without Premium** — tap *Ohne Premium verbinden* ("connect without
-  Premium") on the Spotify card: Spotify is then used through files — as a
-  *source* by importing Spotify's own data export (`my_spotify_data.zip`, sent by
-  e-mail) or an export of the Spicetify app
-  [data-porter](https://github.com/Prog-Jacob/spicetify-apps) (playlists and
-  liked songs), as a *target* by generating one file that data-porter imports.
-- **Large libraries** — online converters usually cap free transfers; this tool
-  has no limits (its file import was tested with a real library of 434 playlists
-  and 98,517 songs).
-- **Privacy-sensitive users** — no account at an intermediary service, no upload
-  of your library, tokens stored encrypted on your own device.
-- **Backups** — every transfer first writes a readable JSON backup of the source
-  playlists.
+**What it does**
 
-## Quickstart
+- Copies whole playlists and liked songs in **any direction** between Spotify,
+  Deezer, TIDAL, YouTube Music and SoundCloud — tested with 434 playlists and
+  98,517 songs.
+- **Accurate matching:** identical ISRC first, then title, artist, duration and
+  version tags. Uncertain matches go to a review step; live, remix, karaoke and
+  instrumental versions are never accepted automatically.
+- **Private:** runs on `127.0.0.1`; logins stay on your device, stored encrypted.
+  No account at a third party, no upload of your library.
+- **Safe:** JSON backup before every transfer; interrupted transfers resume
+  without duplicate playlists.
+- **Spotify without Premium:** *Connect without Premium* uses files — Spotify’s
+  own data export (`my_spotify_data.zip`) or a
+  [data-porter](https://github.com/Prog-Jacob/spicetify-apps) export as source,
+  one data-porter file as target.
+- Built-in updates without a GitHub login. Three standalone apps: Linux `.deb`,
+  Windows installer (no admin rights), Android `.apk` (no computer needed).
 
-**Linux (Debian, Ubuntu, Linux Mint)** — download the newest `.deb` and install it:
+**Install**
 
 ```bash
+# Linux (Debian, Ubuntu, Linux Mint)
 curl -s https://api.github.com/repos/BjoernHa/Playlist-Converter-Tamilein/releases/latest \
   | grep -o 'https://[^"]*_all\.deb' | xargs curl -LO
-sudo apt install ./tamilein_*_all.deb
-tamilein            # opens the app at http://127.0.0.1:8000 in your browser
+sudo apt install ./tamilein_*_all.deb && tamilein   # opens http://127.0.0.1:8000
 ```
 
-**Windows** — PowerShell (or just download `…-Setup.exe` from the release and double-click it; no admin rights needed):
+Windows: run `Tamilein-<version>-Setup.exe` from the
+[latest release](../../releases/latest). Android: download
+`tamilein-<version>.apk` on the phone and install it.
 
-```powershell
-$r = Invoke-RestMethod https://api.github.com/repos/BjoernHa/Playlist-Converter-Tamilein/releases/latest
-$a = $r.assets | Where-Object name -like '*-Setup.exe'
-Invoke-WebRequest $a.browser_download_url -OutFile $a.name; Start-Process $a.name
-```
+**How it works:** Connect → Source (pick playlists) → Target (analyze) →
+Search → Review uncertain matches → Transfer. A report lists skipped songs.
 
-**Android** — open the [latest release](../../releases/latest) on the phone,
-download `tamilein-<version>.apk`, tap it and allow installing from this source.
-
-Then, in the app:
-
-1. **Connect** the services you want to use (each card explains how).
-2. **Source** — load your playlists (or import a file) and tick the ones to copy.
-3. **Target** — choose the destination service and analyse.
-4. **Search** — every song is looked up on the target service.
-5. **Review** — confirm or correct uncertain matches.
-6. **Transfer** — the playlists are created; a report shows what was skipped.
-
-## Comparison / Why this Tool?
-
-| | Playlist-Converter | Typical online converters (e.g. TuneMyMusic, Soundiiz) |
+| | Playlist-Converter | Online converters (TuneMyMusic, Soundiiz …) |
 |---|---|---|
-| Where it runs | on your own device (Linux, Windows, Android) | in the provider's cloud |
-| Transfer limits | none | free tiers are limited |
-| Account at a third party | not needed | usually required |
-| Access to your streaming accounts | stays on your device, stored encrypted | granted to the provider |
-| Matching | ISRC first, then title, artist, duration and version tags; uncertain matches go to a review step | varies |
-| Wrong-match protection | live/remix/karaoke/instrumental versions are never accepted automatically | varies |
-| Spotify without Premium | "connect without Premium": source via Spotify's data export or a data-porter export, target via one data-porter file | depends on the provider |
-| Backup before transfer | always (JSON, human-readable) | usually not |
-| Resume after interruption | yes, already created playlists are not duplicated | varies |
-| Price | free | full use usually needs a subscription |
+| Runs | on your device | in the provider’s cloud |
+| Limits | none | free tiers are limited |
+| Account at a third party | no | usually yes |
+| Backup / resume | always / yes | varies |
+| Price | free | subscription for full use |
 
-What it does **not** do: Apple Music is not supported, and there is no automatic
-background sync (every transfer is started by you).
+**FAQ**
 
-## Frequently Asked Questions (FAQ)
-
-**Which services are supported?**
-Spotify, Deezer, TIDAL, YouTube Music and SoundCloud — in any direction.
-
-**Is it free?**
-Yes. There are no subscriptions, no limits and no ads.
-
-**Do I need Spotify Premium?**
-No. Since February 2026 Spotify only lets Premium users create the developer app
-needed for its Web API. Without Premium, tap *Ohne Premium verbinden* on the
-Spotify card. Playlist-Converter then reads Spotify playlists and liked songs
-from an export file (Spicetify data-porter, Spotify's own data export, or a CSV
-such as Exportify) and writes to Spotify by generating **one** file that the
-Spicetify app data-porter imports in Spotify on a computer (compact enough for
-data-porter's 20 MB limit even with ~100,000 songs).
-
-**How does it connect to Deezer, YouTube Music and SoundCloud?**
-These services no longer offer open API registration. The app uses the same
-interface as their websites; you paste one value from your browser (Deezer:
-the `arl` cookie, SoundCloud: `oauth_token`, YouTube Music: the `browse`
-request — easiest via right-click → Copy → *Copy as cURL*; the app also accepts
-the selected request headers as Chrome or Firefox copy them (in the *Raw* view
-click *Show more* first, it stops after 3,000 characters), or just the cookie).
-The app marks this as unofficial — a change on the service's side can break it.
-TIDAL uses its official API with your own free developer app.
-
-**How accurate is the matching?**
-A song is taken over automatically only on an identical ISRC, or when title,
-artist, duration and version tags all match closely. Everything else goes to a
-review screen with two or three alternatives. Wrong matches are treated as worse
-than missing ones.
-
-**Where are my data and passwords stored?**
-Only on your device: tokens in the system keyring, the Android Keystore or an
-encrypted file; playlists and backups as local JSON files. Nothing is sent to
-anyone except the music services themselves.
-
-**Can I move my logins to another device?**
-Yes — the app can save all connections into a password-protected, encrypted file
-and read it in on another device.
-
-**How do I disconnect everything?**
-At the top right, next to the help button, *Alle trennen* ("disconnect all") removes
-every login at once and resets selection and plan — optionally also the app
-credentials you entered. Backups and generated files stay.
-
-**What happens if a transfer is interrupted?**
-The plan is saved on disk. On the next start the app offers to continue;
-playlists that were already created are completed, not created twice.
-
-**Does the Android app need a computer?**
-No. Each of the three versions (Linux, Windows, Android) runs completely on its
-own.
-
-**How do I update?**
-The app checks for a newer version at start and offers it; there is also a
-“search for updates” button at the bottom of the help page. No GitHub account is
-needed. On Linux the app then shows “Update installiert” with a “Jetzt neu
-starten” (restart now) button — one click and the page reloads with the new
-version. Windows and Android restart the app themselves.
-
-**Is Apple Music supported?**
-No, and it is not planned (it requires a paid Apple developer account).
-
-**Is it open source?**
-It is licensed under GPL-3.0-or-later. The source code is not published in this
-repository; anyone who received a program from here can request it via an issue.
-
-## Files in this repository
-
-- [`README.md`](README.md) — this overview
-- [`llms.txt`](llms.txt) — compact summary for AI assistants and search engines
-- [`AGENTS.md`](AGENTS.md) — guide for autonomous agents that install or operate the app
-- [Releases](../../releases/latest) — the installation files
+- *Which services?* Spotify, Deezer, TIDAL, YouTube Music, SoundCloud. Not
+  Apple Music (needs a paid developer account).
+- *Free?* Yes — no subscription, no limits, no ads.
+- *Deezer, YouTube Music, SoundCloud without an API key?* You paste one value
+  from your browser (Deezer `arl` cookie, SoundCloud `oauth_token`, YouTube
+  Music request copied as cURL). Unofficial — a change on the service’s side
+  can break it. TIDAL uses its official API with your free developer app.
+- *Move logins to another device?* Save them as a password-encrypted file and
+  load it there.
+- *Source code?* Not in this repository; request it via an issue (GPL).
 
 ---
 
-## Deutsch — Kurzfassung
+## Deutsch
 
-**Playlists frei übertragen** zwischen Spotify, Deezer, TIDAL, YouTube Music und
-SoundCloud — ohne Limit, ohne Konto bei einem Zwischendienst, alles lokal auf
-deinem Gerät. Die Dateien liegen unter **[Releases](../../releases/latest)**:
-`.deb` für Linux Mint/Ubuntu/Debian (Doppelklick → „Paket installieren“),
-`…-Setup.exe` für Windows (Doppelklick, kein Administrator nötig) und `.apk` für
-Android (antippen, Installation aus dieser Quelle erlauben). Aktualisieren geht
-im Programm selbst, ohne Anmeldung. Spotify ohne Premium: auf der Spotify-Karte
-„Ohne Premium verbinden“ — dann kommt die Quelle aus einer Datei (Spotifys
-Datenexport oder data-porter), und als Ziel entsteht eine Datei für die
-Spicetify-App data-porter. Lizenz: GPL-3.0-or-later; den Quellcode gibt
-es auf Anfrage über ein Issue.
+**Was es kann**
+
+- Überträgt ganze Playlists und Lieblingssongs **in jede Richtung** zwischen
+  Spotify, Deezer, TIDAL, YouTube Music und SoundCloud — erprobt mit 434
+  Playlists und 98.517 Songs.
+- **Genaue Zuordnung:** zuerst gleicher ISRC, dann Titel, Interpret, Dauer und
+  Fassung. Unsichere Treffer kommen in die Prüfansicht; Live-, Remix-, Karaoke-
+  und Instrumentalfassungen werden nie automatisch übernommen.
+- **Privat:** läuft auf `127.0.0.1`; Anmeldungen bleiben verschlüsselt auf
+  deinem Gerät. Kein Konto bei einem Zwischendienst, kein Hochladen der
+  Bibliothek.
+- **Sicher:** JSON-Backup vor jeder Übertragung; abgebrochene Übertragungen
+  setzen fort, ohne Playlists doppelt anzulegen.
+- **Spotify ohne Premium:** „Ohne Premium verbinden“ arbeitet mit Dateien —
+  Spotifys eigener Datenexport oder ein data-porter-Export als Quelle, eine
+  Datei für data-porter als Ziel.
+- Aktualisieren im Programm, ohne GitHub-Anmeldung. Drei eigenständige
+  Programme: Linux-`.deb`, Windows-Installer (ohne Administratorrechte),
+  Android-`.apk` (kein Rechner nötig).
+
+**Installieren:** unter **[Releases](../../releases/latest)** die passende
+Datei laden — `.deb` doppelt anklicken → „Paket installieren“,
+`…-Setup.exe` doppelt anklicken, `.apk` am Telefon antippen und die
+Installation aus dieser Quelle erlauben.
+
+**Ablauf:** Verbinden → Quelle (Playlists wählen) → Ziel (analysieren) →
+Suchen → unsichere Treffer prüfen → Übertragen. Ein Bericht nennt, was fehlt.
+
+**Häufige Fragen:** Apple Music wird nicht unterstützt (kostenpflichtiges
+Entwicklerkonto). Kosten: keine, kein Abo, kein Limit. Deezer, YouTube Music
+und SoundCloud werden über ihre Websites angebunden (ein Wert aus dem Browser;
+inoffiziell). Anmeldungen lassen sich als verschlüsselte Datei auf ein anderes
+Gerät mitnehmen. Den Quellcode gibt es auf Anfrage über ein Issue (GPL).
+
+---
+
+Files: [`llms.txt`](llms.txt) (summary for AI assistants) ·
+[`AGENTS.md`](AGENTS.md) (guide for agents and automation) ·
+[Releases](../../releases/latest)
+
+<sub>Keywords: playlist converter, transfer playlists, Spotify to TIDAL, Spotify
+to Deezer, Deezer to Spotify, YouTube Music to Spotify, SoundCloud playlist
+export, Soundiiz alternative, TuneMyMusic alternative, free, offline, privacy ·
+Playlist übertragen, Playlist-Konverter, Spotify zu TIDAL, Spotify zu Deezer,
+kostenlos, ohne Limit</sub>
