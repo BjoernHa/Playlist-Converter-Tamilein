@@ -24,11 +24,12 @@ interface is in German.
 - **Using two services side by side** — copy selected playlists from Deezer to
   YouTube Music, from SoundCloud to Spotify, and so on (any direction between the
   five supported services).
-- **Spotify without Premium** — tap *Verbinden für Dataporter* ("connect for
-  Dataporter") on the Spotify card: Spotify is then used through files of the
-  Spicetify app [data-porter](https://github.com/Prog-Jacob/spicetify-apps) —
-  as a *source* by importing its export (playlists and liked songs), as a
-  *target* by generating one file that data-porter imports.
+- **Spotify without Premium** — tap *Ohne Premium verbinden* ("connect without
+  Premium") on the Spotify card: Spotify is then used through files — as a
+  *source* by importing Spotify's own data export (`my_spotify_data.zip`, sent by
+  e-mail) or an export of the Spicetify app
+  [data-porter](https://github.com/Prog-Jacob/spicetify-apps) (playlists and
+  liked songs), as a *target* by generating one file that data-porter imports.
 - **Large libraries** — online converters usually cap free transfers; this tool
   has no limits (its file import was tested with a real library of 434 playlists
   and 98,517 songs).
@@ -78,7 +79,7 @@ Then, in the app:
 | Access to your streaming accounts | stays on your device, stored encrypted | granted to the provider |
 | Matching | ISRC first, then title, artist, duration and version tags; uncertain matches go to a review step | varies |
 | Wrong-match protection | live/remix/karaoke/instrumental versions are never accepted automatically | varies |
-| Spotify without Premium | "connect for Dataporter": source via data-porter export, target via one data-porter file | depends on the provider |
+| Spotify without Premium | "connect without Premium": source via Spotify's data export or a data-porter export, target via one data-porter file | depends on the provider |
 | Backup before transfer | always (JSON, human-readable) | usually not |
 | Resume after interruption | yes, already created playlists are not duplicated | varies |
 | Price | free | full use usually needs a subscription |
@@ -96,7 +97,7 @@ Yes. There are no subscriptions, no limits and no ads.
 
 **Do I need Spotify Premium?**
 No. Since February 2026 Spotify only lets Premium users create the developer app
-needed for its Web API. Without Premium, tap *Verbinden für Dataporter* on the
+needed for its Web API. Without Premium, tap *Ohne Premium verbinden* on the
 Spotify card. Playlist-Converter then reads Spotify playlists and liked songs
 from an export file (Spicetify data-porter, Spotify's own data export, or a CSV
 such as Exportify) and writes to Spotify by generating **one** file that the
@@ -144,7 +145,9 @@ own.
 **How do I update?**
 The app checks for a newer version at start and offers it; there is also a
 “search for updates” button at the bottom of the help page. No GitHub account is
-needed.
+needed. On Linux the app then shows “Update installiert” with a “Jetzt neu
+starten” (restart now) button — one click and the page reloads with the new
+version. Windows and Android restart the app themselves.
 
 **Is Apple Music supported?**
 No, and it is not planned (it requires a paid Apple developer account).
@@ -171,6 +174,7 @@ deinem Gerät. Die Dateien liegen unter **[Releases](../../releases/latest)**:
 `…-Setup.exe` für Windows (Doppelklick, kein Administrator nötig) und `.apk` für
 Android (antippen, Installation aus dieser Quelle erlauben). Aktualisieren geht
 im Programm selbst, ohne Anmeldung. Spotify ohne Premium: auf der Spotify-Karte
-„Verbinden für Dataporter“ — dann laufen Quelle und Ziel über Dateien der
+„Ohne Premium verbinden“ — dann kommt die Quelle aus einer Datei (Spotifys
+Datenexport oder data-porter), und als Ziel entsteht eine Datei für die
 Spicetify-App data-porter. Lizenz: GPL-3.0-or-later; den Quellcode gibt
 es auf Anfrage über ein Issue.

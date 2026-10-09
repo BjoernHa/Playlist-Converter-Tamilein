@@ -46,7 +46,7 @@ their behalf without asking.
 The UI talks to a local JSON API. It is **internal and may change between
 versions**; prefer guiding the user through the UI. Typical sequence:
 
-1. `GET /api/state` — services, connection state (`session == "ok"` means verified; `dataporter: true` on Spotify means "connected for Dataporter", i.e. file mode without Premium), selection, plan, job.
+1. `GET /api/state` — services, connection state (`session == "ok"` means verified; `dataporter: true` on Spotify means "connected without Premium", i.e. file mode), selection, plan, job.
 2. `POST /api/library/load` `{"source": "deezer"}` — returns a job; poll `GET /api/jobs/{job_id}` until `status != "running"`.
 3. `POST /api/selection` `{"target": "tidal", "playlist_ids": ["…"], "include_liked": false}`
 4. `POST /api/analyse` → job (writes a JSON backup, detects name collisions).
@@ -63,6 +63,10 @@ and resets selection and plan — destructive; only on the user's explicit reque
 Cancel a running job with `POST /api/jobs/{job_id}/cancel`. On `127.0.0.1` no
 key is needed. With `--host 0.0.0.0` every request needs the access key shown at
 start, and the Android app always uses one.
+The server only answers requests addressed to an IP address or `localhost`
+(other host names get HTTP 421), and state-changing requests carrying a
+foreign `Origin` header are rejected (HTTP 403). Plain `curl` against
+`http://127.0.0.1:8000` works as before.
 
 ## Rules for agents
 
@@ -76,8 +80,8 @@ start, and the Android app always uses one.
   requires the access key.
 - Deezer, YouTube Music and SoundCloud are connected through their websites'
   interfaces (unofficial). Respect the services' terms and rate limits.
-- Spotify without Premium cannot be written to directly. Connect it "for
-  Dataporter" and choose it as the target anyway: the app generates one file for
+- Spotify without Premium cannot be written to directly. Connect it "without
+  Premium" and choose it as the target anyway: the app generates one file for
   the Spicetify app [data-porter](https://github.com/Prog-Jacob/spicetify-apps),
   which the user imports in the Spotify desktop client.
 - **Never disconnect services or reset the app** (`/api/alles-trennen`, logout

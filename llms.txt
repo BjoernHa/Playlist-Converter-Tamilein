@@ -6,7 +6,7 @@
 
 - Any direction between Spotify, Deezer, TIDAL, YouTube Music and SoundCloud; whole playlists and liked songs, no size limit.
 - Matching: identical ISRC first, then fuzzy matching on title, artist, duration and version tags (live, remix, karaoke, instrumental). Only safe matches are accepted automatically; the rest goes to a review step with 2–3 alternatives, plus "accept all above X %".
-- Spotify without Premium: "Verbinden für Dataporter" (connect for Dataporter) on the Spotify card — as source via file import (Spicetify data-porter export incl. liked songs, Spotify data export ZIP, CSV such as Exportify, plain text); as target by generating exactly one JSON file for the Spicetify app data-porter (fits its 20 MB limit even for ~100,000 songs).
+- Spotify without Premium: "Ohne Premium verbinden" (connect without Premium) on the Spotify card — as source via file import (Spotify's own data export ZIP sent by e-mail, Spicetify data-porter export incl. liked songs, CSV such as Exportify, plain text); as target by generating exactly one JSON file for the Spicetify app data-porter (fits its 20 MB limit even for ~100,000 songs).
 - YouTube Music login: paste the "browse" request copied from the browser's developer tools — as cURL (easiest), as selected request headers (Chrome/Firefox; in Chrome's Raw view click "Show more" first) or just the cookie.
 - "Alle trennen" (disconnect all services) at the top right, next to the help button, resets all logins, selection and plan at once.
 - Safety: JSON backup of the source before every transfer; name-collision handling (overwrite, skip, new with suffix); interrupted transfers resume without creating duplicate playlists.
