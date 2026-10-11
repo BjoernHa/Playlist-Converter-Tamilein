@@ -1,19 +1,20 @@
 # Playlist-Converter
 
-> Free, local playlist converter for Linux, Windows and Android: transfers playlists and liked songs between Spotify, Deezer, TIDAL, YouTube Music and SoundCloud in any direction — no transfer limits, no third-party cloud, logins stay encrypted on the user's device. User interface in English and German. Project name: Tamilein. This repository (BjoernHa/Playlist-Converter-Tamilein) publishes only the installation files. License: GPL-3.0-or-later (source code on request).
+> Free, local playlist converter for Linux, Windows and Android: transfers playlists and liked songs between Spotify, Deezer, TIDAL, YouTube Music, SoundCloud and Apple Music in any direction — no transfer limits, no third-party cloud, logins stay encrypted on the user's device. User interface in English and German. Project name: Tamilein. This repository (BjoernHa/Playlist-Converter-Tamilein) publishes only the installation files. License: GPL-3.0-or-later (source code on request).
 >
-> Deutsch: Kostenloser, lokaler Playlist-Konverter für Linux, Windows und Android — überträgt Playlists und Lieblingssongs zwischen Spotify, Deezer, TIDAL, YouTube Music und SoundCloud, ohne Limit und ohne Cloud. Oberfläche auf Deutsch und Englisch.
+> Deutsch: Kostenloser, lokaler Playlist-Konverter für Linux, Windows und Android — überträgt Playlists und Lieblingssongs zwischen Spotify, Deezer, TIDAL, YouTube Music, SoundCloud und Apple Music, ohne Limit und ohne Cloud. Oberfläche auf Deutsch und Englisch.
 
 ## Core features
 
-- Any direction between Spotify, Deezer, TIDAL, YouTube Music and SoundCloud; whole playlists and liked songs; tested with 434 playlists and 98,517 songs.
+- Any direction between Spotify, Deezer, TIDAL, YouTube Music, SoundCloud and Apple Music; whole playlists and liked songs; tested with 434 playlists and 98,517 songs.
 - Matching: identical ISRC first, then title, artist, duration and version tags (live, remix, karaoke, instrumental are never accepted automatically); uncertain matches go to a review step with alternatives and "accept all above X %".
 - Spotify without Premium: "Connect without Premium" — source via file import (Spotify's own data export ZIP, Spicetify data-porter export, Exportify CSV, plain text), target via one JSON file for the Spicetify app data-porter (fits its 20 MB limit for ~100,000 songs).
 - Deezer, YouTube Music, SoundCloud: connected through their websites' interfaces by pasting one value from the browser (unofficial). TIDAL: official API with the user's free developer app.
+- Apple Music: connected through the interface of music.apple.com (unofficial) by pasting a request to amp-api.music.apple.com copied as cURL, or just the `media-user-token` cookie; needs an active Apple Music subscription. Apple Music offers no request that lists the user's favorites — as the source, liked songs are the songs in the user's library; as the target, liked songs are added to the library and marked as favorites (according to Apple, that also puts them in the favorite songs playlist).
 - Safety: JSON backup before every transfer; name-collision handling; interrupted transfers resume without duplicate playlists.
 - Privacy: server on 127.0.0.1; tokens encrypted (system keyring, Android Keystore or encrypted file); encrypted export of all logins to move them to another device.
 - Three standalone programs: Linux .deb, Windows installer (no admin rights), Android .apk (Python runs inside the app). Built-in updates, no GitHub login needed.
-- Not supported: Apple Music; automatic background sync.
+- Not supported: automatic background sync.
 
 ## Quickstart
 

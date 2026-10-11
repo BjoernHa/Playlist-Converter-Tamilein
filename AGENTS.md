@@ -9,9 +9,10 @@ operate Playlist-Converter on behalf of a user. For humans, see
 - Release-only mirror of Playlist-Converter (project name *Tamilein*). It contains
   **no source code** — only `README.md`, `llms.txt`, this file and the
   [releases](https://github.com/BjoernHa/Playlist-Converter-Tamilein/releases/latest).
-- The app transfers playlists between Spotify, Deezer, TIDAL, YouTube Music and
-  SoundCloud. It runs locally; the user interface is available in **English and
-  German** (language button at the top right; German is the default).
+- The app transfers playlists between Spotify, Deezer, TIDAL, YouTube Music,
+  SoundCloud and Apple Music. It runs locally; the user interface is available
+  in **English and German** (language button at the top right; German is the
+  default).
 - Deutsch: Leitfaden für Agenten, die Playlist-Converter für einen Nutzer
   installieren oder bedienen. Die Regeln unten gelten unverändert.
 
@@ -78,12 +79,17 @@ foreign `Origin` header are rejected (HTTP 403). Plain `curl` against
   explicitly ask for it. The app deliberately leaves them for review; a wrong
   song in a playlist is worse than a missing one.
 - **Treat all service credentials as secrets.** Deezer `arl`, SoundCloud
-  `oauth_token`, YouTube Music headers and TIDAL/Spotify client secrets grant
-  full account access. Never log, echo, commit or send them anywhere.
+  `oauth_token`, YouTube Music headers, the Apple Music `media-user-token` (and
+  any copied `amp-api` request) and TIDAL/Spotify client secrets grant full
+  account access. Never log, echo, commit or send them anywhere.
 - **Do not expose the server** (`--host 0.0.0.0`) unless the user asks; it then
   requires the access key.
-- Deezer, YouTube Music and SoundCloud are connected through their websites'
-  interfaces (unofficial). Respect the services' terms and rate limits.
+- Deezer, YouTube Music, SoundCloud and Apple Music are connected through their
+  websites' interfaces (unofficial). Respect the services' terms and rate limits.
+  Apple Music needs an active Apple Music subscription. As a source, its "liked
+  songs" are the songs in the user's library (Apple offers no request that lists
+  favorites); as a target, liked songs are added to the library and marked as
+  favorites.
 - Spotify without Premium cannot be written to directly. Connect it "without
   Premium" and choose it as the target anyway: the app generates one file for
   the Spicetify app [data-porter](https://github.com/Prog-Jacob/spicetify-apps),

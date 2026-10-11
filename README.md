@@ -1,13 +1,13 @@
 # Playlist-Converter
 
 **🇬🇧 Free playlist converter that runs on your own device: transfer playlists
-and liked songs between Spotify, Deezer, TIDAL, YouTube Music and SoundCloud —
-on Linux, Windows and Android, with no limits and no cloud.**
+and liked songs between Spotify, Deezer, TIDAL, YouTube Music, SoundCloud and
+Apple Music — on Linux, Windows and Android, with no limits and no cloud.**
 
 **🇩🇪 Kostenloser Playlist-Konverter, der auf deinem eigenen Gerät läuft:
-Playlists und Lieblingssongs zwischen Spotify, Deezer, TIDAL, YouTube Music und
-SoundCloud übertragen — unter Linux, Windows und Android, ohne Limit und ohne
-Cloud.**
+Playlists und Lieblingssongs zwischen Spotify, Deezer, TIDAL, YouTube Music,
+SoundCloud und Apple Music übertragen — unter Linux, Windows und Android, ohne
+Limit und ohne Cloud.**
 
 ➡️ **[Download / Herunterladen](../../releases/latest)** — `.deb` (Linux) ·
 `…-Setup.exe` (Windows) · `.apk` (Android) · [English](#english) ·
@@ -24,8 +24,8 @@ top right). License: GPL-3.0-or-later.
 **What it does**
 
 - Copies whole playlists and liked songs in **any direction** between Spotify,
-  Deezer, TIDAL, YouTube Music and SoundCloud — tested with 434 playlists and
-  98,517 songs.
+  Deezer, TIDAL, YouTube Music, SoundCloud and Apple Music — tested with 434
+  playlists and 98,517 songs.
 - **Accurate matching:** identical ISRC first, then title, artist, duration and
   version tags. Uncertain matches go to a review step; live, remix, karaoke and
   instrumental versions are never accepted automatically.
@@ -66,13 +66,18 @@ Search → Review uncertain matches → Transfer. A report lists skipped songs.
 
 **FAQ**
 
-- *Which services?* Spotify, Deezer, TIDAL, YouTube Music, SoundCloud. Not
-  Apple Music (needs a paid developer account).
+- *Which services?* Spotify, Deezer, TIDAL, YouTube Music, SoundCloud and
+  Apple Music (needs an active Apple Music subscription; as the source, liked
+  songs are the songs in your library — Apple offers no request that lists
+  favorites; as the target, they are added to the library and marked as
+  favorites).
 - *Free?* Yes — no subscription, no limits, no ads.
-- *Deezer, YouTube Music, SoundCloud without an API key?* You paste one value
-  from your browser (Deezer `arl` cookie, SoundCloud `oauth_token`, YouTube
-  Music request copied as cURL). Unofficial — a change on the service’s side
-  can break it. TIDAL uses its official API with your free developer app.
+- *Deezer, YouTube Music, SoundCloud, Apple Music without an API key?* You
+  paste one value from your browser (Deezer `arl` cookie, SoundCloud
+  `oauth_token`, YouTube Music request copied as cURL, Apple Music `amp-api`
+  request copied as cURL or the `media-user-token` cookie). Unofficial — a
+  change on the service’s side can break it. TIDAL uses its official API with
+  your free developer app.
 - *Move logins to another device?* Save them as a password-encrypted file and
   load it there.
 - *Source code?* Not in this repository; request it via an issue (GPL).
@@ -84,8 +89,8 @@ Search → Review uncertain matches → Transfer. A report lists skipped songs.
 **Was es kann**
 
 - Überträgt ganze Playlists und Lieblingssongs **in jede Richtung** zwischen
-  Spotify, Deezer, TIDAL, YouTube Music und SoundCloud — erprobt mit 434
-  Playlists und 98.517 Songs.
+  Spotify, Deezer, TIDAL, YouTube Music, SoundCloud und Apple Music — erprobt
+  mit 434 Playlists und 98.517 Songs.
 - **Genaue Zuordnung:** zuerst gleicher ISRC, dann Titel, Interpret, Dauer und
   Fassung. Unsichere Treffer kommen in die Prüfansicht; Live-, Remix-, Karaoke-
   und Instrumentalfassungen werden nie automatisch übernommen.
@@ -109,11 +114,14 @@ Installation aus dieser Quelle erlauben.
 **Ablauf:** Verbinden → Quelle (Playlists wählen) → Ziel (analysieren) →
 Suchen → unsichere Treffer prüfen → Übertragen. Ein Bericht nennt, was fehlt.
 
-**Häufige Fragen:** Apple Music wird nicht unterstützt (kostenpflichtiges
-Entwicklerkonto). Kosten: keine, kein Abo, kein Limit. Deezer, YouTube Music
-und SoundCloud werden über ihre Websites angebunden (ein Wert aus dem Browser;
-inoffiziell). Anmeldungen lassen sich als verschlüsselte Datei auf ein anderes
-Gerät mitnehmen. Den Quellcode gibt es auf Anfrage über ein Issue (GPL).
+**Häufige Fragen:** Kosten: keine, kein Abo, kein Limit. Deezer, YouTube
+Music, SoundCloud und Apple Music werden über ihre Websites angebunden (ein
+Wert aus dem Browser; inoffiziell). Apple Music braucht ein aktives
+Apple-Music-Abo; als Quelle gelten dort die Titel der Mediathek als
+Lieblingssongs (Favoriten lassen sich nicht auflisten), als Ziel kommen sie in
+die Mediathek und werden als Favorit markiert. Anmeldungen lassen sich als
+verschlüsselte Datei auf ein anderes Gerät mitnehmen. Den Quellcode gibt es auf
+Anfrage über ein Issue (GPL).
 
 ---
 
@@ -122,7 +130,8 @@ Files: [`llms.txt`](llms.txt) (summary for AI assistants) ·
 [Releases](../../releases/latest)
 
 <sub>Keywords: playlist converter, transfer playlists, Spotify to TIDAL, Spotify
-to Deezer, Deezer to Spotify, YouTube Music to Spotify, SoundCloud playlist
-export, Soundiiz alternative, TuneMyMusic alternative, free, offline, privacy ·
-Playlist übertragen, Playlist-Konverter, Spotify zu TIDAL, Spotify zu Deezer,
+to Deezer, Spotify to Apple Music, Apple Music to Spotify, Deezer to Spotify,
+YouTube Music to Spotify, SoundCloud playlist export, Soundiiz alternative,
+TuneMyMusic alternative, free, offline, privacy · Playlist übertragen,
+Playlist-Konverter, Spotify zu TIDAL, Spotify zu Deezer, Spotify zu Apple Music,
 kostenlos, ohne Limit</sub>
