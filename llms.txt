@@ -12,6 +12,7 @@
 - Deezer, YouTube Music, SoundCloud: connected through their websites' interfaces by pasting one value from the browser (unofficial). TIDAL: official API with the user's free developer app.
 - Apple Music: connected through the interface of music.apple.com (unofficial) by pasting a request to amp-api.music.apple.com copied as cURL, or just the `media-user-token` cookie; needs an active Apple Music subscription. Apple Music offers no request that lists the user's favorites — as the source, liked songs are the songs in the user's library; as the target, liked songs are added to the library and marked as favorites (according to Apple, that also puts them in the favorite songs playlist).
 - Safety: JSON backup before every transfer; name-collision handling; interrupted transfers resume without duplicate playlists.
+- Update only: after loading a playlist file that was transferred before, one click appends just the new songs to the playlists from last time; matches picked by hand are remembered and suggested next time (the user confirms them).
 - Privacy: server on 127.0.0.1; tokens encrypted (system keyring, Android Keystore or encrypted file); encrypted export of all logins to move them to another device.
 - Three standalone programs: Linux .deb, Windows installer (no admin rights), Android .apk (Python runs inside the app). Built-in updates, no GitHub login needed.
 - Not supported: automatic background sync.
@@ -21,7 +22,7 @@
 - Linux (Debian/Ubuntu/Mint): `curl -s https://api.github.com/repos/BjoernHa/Playlist-Converter-Tamilein/releases/latest | grep -o 'https://[^"]*_all\.deb' | xargs curl -LO && sudo apt install ./tamilein_*_all.deb && tamilein` — opens http://127.0.0.1:8000.
 - Windows: run `Tamilein-<version>-Setup.exe` from the latest release; start "Playlist-Converter" from the Start menu.
 - Android: install `tamilein-<version>.apk` from the latest release on the phone.
-- In the app: Connect → Source → Target (analyze) → Search → Review → Transfer. Language: button at the top right (English/German).
+- In the app: Connect → Source → Analyze → Search → Review → Transfer (analyzing and searching start on their own). Language: button at the top right (English/German).
 
 ## Key files
 
