@@ -37,6 +37,10 @@ top right). License: GPL-3.0-or-later.
   own data export (`my_spotify_data.zip`) or a
   [data-porter](https://github.com/Prog-Jacob/spicetify-apps) export as source,
   one data-porter file as target.
+- **Update only:** after loading a playlist file you transferred before, one
+  click appends just the new songs to the existing playlists in the target.
+  Matches you picked by hand are remembered and suggested next time (you
+  still confirm them).
 - Built-in updates without a GitHub login. Three standalone apps: Linux `.deb`,
   Windows installer (no admin rights), Android `.apk` (no computer needed).
 
@@ -53,8 +57,9 @@ Windows: run `Tamilein-<version>-Setup.exe` from the
 [latest release](../../releases/latest). Android: download
 `tamilein-<version>.apk` on the phone and install it.
 
-**How it works:** Connect → Source (pick playlists) → Target (analyze) →
-Search → Review uncertain matches → Transfer. A report lists skipped songs.
+**How it works:** Connect → Source (pick playlists) → Analyze → Search →
+Review uncertain matches → Transfer; analyzing and searching start on their
+own. A report lists skipped songs.
 
 | | Playlist-Converter | Online converters (TuneMyMusic, Soundiiz …) |
 |---|---|---|
@@ -78,8 +83,8 @@ Search → Review uncertain matches → Transfer. A report lists skipped songs.
   request copied as cURL or the `media-user-token` cookie). Unofficial — a
   change on the service’s side can break it. TIDAL uses its official API with
   your free developer app.
-- *Move logins to another device?* Save them as a password-encrypted file and
-  load it there.
+- *Move logins to another device?* *Export configuration* saves logins and
+  remembered matches as a password-encrypted file; import it there.
 - *Source code?* Not in this repository; request it via an issue (GPL).
 
 ---
@@ -99,6 +104,10 @@ Search → Review uncertain matches → Transfer. A report lists skipped songs.
   Bibliothek.
 - **Sicher:** JSON-Backup vor jeder Übertragung; abgebrochene Übertragungen
   setzen fort, ohne Playlists doppelt anzulegen.
+- **Nur updaten:** Nach dem Einlesen einer schon einmal übertragenen
+  Playlist-Datei hängt ein Klick nur die neuen Songs an die bisherigen
+  Playlists im Ziel. Von Hand gewählte Zuordnungen werden gemerkt und beim
+  nächsten Mal vorgeschlagen (bestätigt wird weiter von dir).
 - **Spotify ohne Premium:** „Ohne Premium verbinden“ arbeitet mit Dateien —
   Spotifys eigener Datenexport oder ein data-porter-Export als Quelle, eine
   Datei für data-porter als Ziel.
@@ -111,16 +120,18 @@ Datei laden — `.deb` doppelt anklicken → „Paket installieren“,
 `…-Setup.exe` doppelt anklicken, `.apk` am Telefon antippen und die
 Installation aus dieser Quelle erlauben.
 
-**Ablauf:** Verbinden → Quelle (Playlists wählen) → Ziel (analysieren) →
-Suchen → unsichere Treffer prüfen → Übertragen. Ein Bericht nennt, was fehlt.
+**Ablauf:** Verbinden → Quelle (Playlists wählen) → Analysieren → Suchen →
+unsichere Treffer prüfen → Übertragen; Analysieren und Suchen starten von
+selbst. Ein Bericht nennt, was fehlt.
 
 **Häufige Fragen:** Kosten: keine, kein Abo, kein Limit. Deezer, YouTube
 Music, SoundCloud und Apple Music werden über ihre Websites angebunden (ein
 Wert aus dem Browser; inoffiziell). Apple Music braucht ein aktives
 Apple-Music-Abo; als Quelle gelten dort die Titel der Mediathek als
 Lieblingssongs (Favoriten lassen sich nicht auflisten), als Ziel kommen sie in
-die Mediathek und werden als Favorit markiert. Anmeldungen lassen sich als
-verschlüsselte Datei auf ein anderes Gerät mitnehmen. Den Quellcode gibt es auf
+die Mediathek und werden als Favorit markiert. Anmeldungen und gemerkte
+Zuordnungen lassen sich als verschlüsselte Datei („Konfiguration exportieren“)
+auf ein anderes Gerät mitnehmen. Den Quellcode gibt es auf
 Anfrage über ein Issue (GPL).
 
 ---
