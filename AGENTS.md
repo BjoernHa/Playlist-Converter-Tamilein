@@ -59,10 +59,18 @@ versions**; prefer guiding the user through the UI. Typical sequence:
 6. `GET /api/review` — uncertain matches; decisions via `POST /api/review/{index}/accept` or `/skip`.
 7. `POST /api/transfer` → job; the report is in `GET /api/state` → `report`.
 
+Update only: after loading a source that was transferred before,
+`GET /api/state` → `update_lauf.verfuegbar` says whether
+`POST /api/update-lauf` can append just the new songs to the playlists from
+last time (a job; its result has `zustand`: `uebertragen`, `pruefen` — open
+matches wait in the review — or `nichts_neu`). Remembered manual matches show
+up in `GET /api/review` with `gemerkt`; `POST /api/review/gemerkte-uebernehmen`
+accepts all of them.
+
 Spotify without Premium: `POST /api/providers/spotify/dataporter` `{"aktiv": true}`
 switches Spotify to file mode (source = import of a data-porter export via
 `POST /api/import`, target = one data-porter file).
-`POST /api/alles-trennen` `{"zugangsdaten": false}` disconnects **every** service
+`POST /api/alles-trennen` `{"zugangsdaten": false, "gedaechtnis": false}` disconnects **every** service
 and resets selection and plan — destructive; only on the user's explicit request.
 
 Cancel a running job with `POST /api/jobs/{job_id}/cancel`. On `127.0.0.1` no
