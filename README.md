@@ -25,7 +25,7 @@ top right). License: GPL-3.0-or-later.
 
 - Copies whole playlists and liked songs in **any direction** between Spotify,
   Deezer, TIDAL, YouTube Music, SoundCloud and Apple Music — tested with 434
-  playlists and 98,517 songs.
+  playlists and 98,517 songs. Liked songs become a playlist or favorites.
 - **Accurate matching:** identical ISRC first, then title, artist, duration and
   version tags. Uncertain matches go to a review step; live, remix, karaoke and
   instrumental versions are never accepted automatically.
@@ -74,8 +74,8 @@ own. A report lists skipped songs.
 - *Which services?* Spotify, Deezer, TIDAL, YouTube Music, SoundCloud and
   Apple Music (needs an active Apple Music subscription; as the source, liked
   songs are the songs in your library — Apple offers no request that lists
-  favorites; as the target, they are added to the library and marked as
-  favorites).
+  favorites; as the target, if you choose favorites instead of a playlist,
+  they are added to the library and marked as favorites).
 - *Free?* Yes — no subscription, no limits, no ads.
 - *Deezer, YouTube Music, SoundCloud, Apple Music without an API key?* You
   paste one value from your browser (Deezer `arl` cookie, SoundCloud
@@ -96,7 +96,7 @@ own. A report lists skipped songs.
 
 - Überträgt ganze Playlists und Lieblingssongs **in jede Richtung** zwischen
   Spotify, Deezer, TIDAL, YouTube Music, SoundCloud und Apple Music — erprobt
-  mit 434 Playlists und 98.517 Songs.
+  mit 434 Playlists und 98.517 Songs. Lieblingssongs: als Playlist oder Favoriten.
 - **Genaue Zuordnung:** zuerst gleicher ISRC, dann Titel, Interpret, Dauer und
   Fassung. Unsichere Treffer kommen in die Prüfansicht; Live-, Remix-, Karaoke-
   und Instrumentalfassungen werden nie automatisch übernommen.
@@ -129,8 +129,8 @@ selbst. Ein Bericht nennt, was fehlt.
 Music, SoundCloud und Apple Music werden über ihre Websites angebunden (ein
 Wert aus dem Browser; inoffiziell). Apple Music braucht ein aktives
 Apple-Music-Abo; als Quelle gelten dort die Titel der Mediathek als
-Lieblingssongs (Favoriten lassen sich nicht auflisten), als Ziel kommen sie in
-die Mediathek und werden als Favorit markiert. Anmeldungen und gemerkte
+Lieblingssongs (Favoriten lassen sich nicht auflisten); als Ziel-Favoriten
+kommen sie in die Mediathek und werden als Favorit markiert. Anmeldungen und gemerkte
 Zuordnungen lassen sich als verschlüsselte Datei (Knopf „Import/Export“ oben)
 auf ein anderes Gerät mitnehmen. Den Quellcode gibt es auf
 Anfrage über ein Issue (GPL).
