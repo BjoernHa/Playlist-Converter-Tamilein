@@ -83,8 +83,9 @@ own. A report lists skipped songs.
   request copied as cURL or the `media-user-token` cookie). Unofficial — a
   change on the service’s side can break it. TIDAL uses its official API with
   your free developer app.
-- *Move logins to another device?* *Export configuration* saves logins and
-  remembered matches as a password-encrypted file; import it there.
+- *Move logins to another device?* The *Import/Export* button at the top
+  saves logins and remembered matches as a password-encrypted file; import it
+  there.
 - *Source code?* Not in this repository; request it via an issue (GPL).
 
 ---
@@ -130,7 +131,7 @@ Wert aus dem Browser; inoffiziell). Apple Music braucht ein aktives
 Apple-Music-Abo; als Quelle gelten dort die Titel der Mediathek als
 Lieblingssongs (Favoriten lassen sich nicht auflisten), als Ziel kommen sie in
 die Mediathek und werden als Favorit markiert. Anmeldungen und gemerkte
-Zuordnungen lassen sich als verschlüsselte Datei („Konfiguration exportieren“)
+Zuordnungen lassen sich als verschlüsselte Datei (Knopf „Import/Export“ oben)
 auf ein anderes Gerät mitnehmen. Den Quellcode gibt es auf
 Anfrage über ein Issue (GPL).
 
