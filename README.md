@@ -77,12 +77,12 @@ own. A report lists skipped songs.
   favorites; as the target, if you choose favorites instead of a playlist,
   they are added to the library and marked as favorites).
 - *Free?* Yes — no subscription, no limits, no ads.
-- *Deezer, YouTube Music, SoundCloud, Apple Music without an API key?* You
-  paste one value from your browser (Deezer `arl` cookie, SoundCloud
-  `oauth_token`, YouTube Music request copied as cURL, Apple Music `amp-api`
-  request copied as cURL or the `media-user-token` cookie). Unofficial — a
-  change on the service’s side can break it. TIDAL uses its official API with
-  your free developer app.
+- *Deezer, YouTube Music, SoundCloud, Apple Music without an API key?* You paste
+  one value from your browser (Deezer `arl` cookie, SoundCloud `oauth_token`,
+  YouTube Music request copied as cURL, Apple Music `amp-api` request copied as
+  cURL or the `media-user-token` cookie); for Apple Music and Deezer (on a
+  computer) a login window reads it. Unofficial. TIDAL: official API with your
+  free developer app (connecting via a code without it requires TIDAL Premium).
 - *Move logins to another device?* The *Import/Export* button at the top
   saves logins and remembered matches as a password-encrypted file; import it
   there.
@@ -125,15 +125,16 @@ Installation aus dieser Quelle erlauben.
 unsichere Treffer prüfen → Übertragen; Analysieren und Suchen starten von
 selbst. Ein Bericht nennt, was fehlt.
 
-**Häufige Fragen:** Kosten: keine, kein Abo, kein Limit. Deezer, YouTube
-Music, SoundCloud und Apple Music werden über ihre Websites angebunden (ein
-Wert aus dem Browser; inoffiziell). Apple Music braucht ein aktives
-Apple-Music-Abo; als Quelle gelten dort die Titel der Mediathek als
-Lieblingssongs (Favoriten lassen sich nicht auflisten); als Ziel-Favoriten
-kommen sie in die Mediathek und werden als Favorit markiert. Anmeldungen und gemerkte
-Zuordnungen lassen sich als verschlüsselte Datei (Knopf „Import/Export“ oben)
-auf ein anderes Gerät mitnehmen. Den Quellcode gibt es auf
-Anfrage über ein Issue (GPL).
+**Häufige Fragen:** Kosten: keine, kein Abo, kein Limit. Deezer, YouTube Music,
+SoundCloud und Apple Music werden über ihre Websites angebunden (ein Wert aus
+dem Browser; inoffiziell — bei Apple Music und Deezer (am Rechner) liest ihn
+ein Anmeldefenster selbst aus). TIDAL: eigene, kostenlose App (direkt per Code
+erfordert TIDAL Premium). Apple Music braucht ein aktives Apple-Music-Abo; als
+Quelle gelten dort die Titel der Mediathek als Lieblingssongs (Favoriten lassen
+sich nicht auflisten); als Ziel-Favoriten kommen sie in die Mediathek und werden
+als Favorit markiert. Anmeldungen und gemerkte Zuordnungen lassen sich als
+verschlüsselte Datei (Knopf „Import/Export“ oben) auf ein anderes Gerät
+mitnehmen. Den Quellcode gibt es auf Anfrage über ein Issue (GPL).
 
 ---
 
