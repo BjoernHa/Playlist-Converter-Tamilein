@@ -1,20 +1,21 @@
 # Playlist-Converter
 
-> Free, local playlist converter for Linux, Windows and Android: transfers playlists and liked songs between Spotify, Deezer, TIDAL, YouTube Music, SoundCloud and Apple Music in any direction — no transfer limits, no third-party cloud, logins stay encrypted on the user's device. User interface in English and German. Project name: Tamilein. This repository (BjoernHa/Playlist-Converter-Tamilein) publishes only the installation files. License: GPL-3.0-or-later (source code on request).
+> Free, local playlist converter for Linux, Windows, Android and iPhone/iPad: transfers playlists and liked songs between Spotify, Deezer, TIDAL, YouTube Music, SoundCloud and Apple Music in any direction — no transfer limits, no third-party cloud, logins stay encrypted on the user's device. User interface in English and German. Project name: Tamilein. This repository (BjoernHa/Playlist-Converter-Tamilein) publishes only the installation files. License: GPL-3.0-or-later (source code on request).
 >
-> Deutsch: Kostenloser, lokaler Playlist-Konverter für Linux, Windows und Android — überträgt Playlists und Lieblingssongs zwischen Spotify, Deezer, TIDAL, YouTube Music, SoundCloud und Apple Music, ohne Limit und ohne Cloud. Oberfläche auf Deutsch und Englisch.
+> Deutsch: Kostenloser, lokaler Playlist-Konverter für Linux, Windows, Android und das iPhone — überträgt Playlists und Lieblingssongs zwischen Spotify, Deezer, TIDAL, YouTube Music, SoundCloud und Apple Music, ohne Limit und ohne Cloud. Oberfläche auf Deutsch und Englisch.
 
 ## Core features
 
 - Any direction between Spotify, Deezer, TIDAL, YouTube Music, SoundCloud and Apple Music; whole playlists and liked songs; tested with 434 playlists and 98,517 songs.
 - Matching: identical ISRC first, then title, artist, duration and version tags (live, remix, karaoke, instrumental are never accepted automatically); uncertain matches go to a review step with alternatives and "accept all above X %".
 - Spotify without Premium: "Connect without Premium" — source via file import (Spotify's own data export ZIP, Spicetify data-porter export, Exportify CSV, plain text), target via one JSON file for the Spicetify app data-porter (fits its 20 MB limit for ~100,000 songs).
-- Deezer, YouTube Music, SoundCloud: connected through their websites' interfaces by pasting one value from the browser (unofficial); for Deezer on the computer, "Sign in via browser window" reads it after the user logs in. TIDAL: official API with the user's free developer app; the direct connect method without an own app (via a code) requires TIDAL Premium.
-- Apple Music: connected through the interface of music.apple.com (unofficial) by pasting a request to amp-api.music.apple.com copied as cURL, or just the `media-user-token` cookie — or, without copying, via "Sign in via browser window" (computer) or the app's own login window (Android); needs an active Apple Music subscription. Apple Music offers no request that lists the user's favorites — as the source, liked songs are the songs in the user's library; as the target, liked songs are added to the library and marked as favorites (according to Apple, that also puts them in the favorite songs playlist).
+- Deezer, YouTube Music, SoundCloud: connected through their websites' interfaces by pasting one value from the browser (unofficial); for Deezer, "Sign in via browser window" (computer) or the app's own sign-in window (iPhone) reads it after the user logs in. TIDAL: official API with the user's free developer app; the direct connect method without an own app (via a code) requires TIDAL Premium.
+- Apple Music: connected through the interface of music.apple.com (unofficial) by pasting a request to amp-api.music.apple.com copied as cURL, or just the `media-user-token` cookie — or, without copying, via "Sign in via browser window" (computer) or the app's own login window (Android, iPhone); needs an active Apple Music subscription. Apple Music offers no request that lists the user's favorites — as the source, liked songs are the songs in the user's library; as the target, liked songs are added to the library and marked as favorites (according to Apple, that also puts them in the favorite songs playlist).
 - Safety: JSON backup before every transfer; name-collision handling; interrupted transfers resume without duplicate playlists.
 - Update only: after loading a playlist file that was transferred before, one click appends just the new songs to the playlists from last time; matches picked by hand are remembered and suggested next time (the user confirms them).
-- Privacy: server on 127.0.0.1; tokens encrypted (system keyring, Android Keystore or encrypted file); encrypted export of all logins to move them to another device.
-- Three standalone programs: Linux .deb, Windows installer (no admin rights), Android .apk (Python runs inside the app). Built-in updates, no GitHub login needed; the Android app downloads an update itself and opens Android's install dialog.
+- Privacy: server on 127.0.0.1; tokens encrypted (system keyring, Android Keystore, iOS Keychain or encrypted file); encrypted export of all logins to move them to another device.
+- Four standalone programs: Linux .deb, Windows installer (no admin rights), Android .apk and iPhone/iPad .ipa (Python runs inside the app). Built-in updates, no GitHub login needed; the Android app downloads an update itself and opens Android's install dialog.
+- iPhone/iPad (iOS 16+): the .ipa is unsigned and is installed with SideStore (or AltStore Classic) and the user's free Apple ID — no paid developer account; a computer (Windows, macOS or Linux) is needed to set up SideStore (via iloader) and again if the pairing file or SideStore itself expires. Free Apple ID limits: each sideloaded app runs 7 days and is refreshed in SideStore; SideStore itself must be opened at least every 7 days, otherwise it has to be reinstalled with iloader; at most 3 such apps at a time (SideStore counts) and 10 app IDs per 7 days. An app can't replace itself on iOS: updates show up in SideStore under "My Apps" only if the app was installed from the SideStore/AltStore source https://github.com/BjoernHa/Playlist-Converter-Tamilein/releases/latest/download/altstore-quelle.json ("Sources" → "+", then "FREE"); an .ipa installed by hand (Files → Share → SideStore) gets no update notices. iOS pauses apps in the background, so long transfers need the app open. SoundCloud and YouTube Music are connected on a computer and moved over with the encrypted configuration export ("Import/Export" → password → "Export" / "Import"). With a different Apple ID the app becomes a new app with empty data. AltStore PAL is not suitable (notarized apps only). Not yet tried on a real iPhone (simulator only).
 - Not supported: automatic background sync.
 
 ## Quickstart
@@ -22,13 +23,14 @@
 - Linux (Debian/Ubuntu/Mint): `curl -s https://api.github.com/repos/BjoernHa/Playlist-Converter-Tamilein/releases/latest | grep -o 'https://[^"]*_all\.deb' | xargs curl -LO && sudo apt install ./tamilein_*_all.deb && tamilein` — opens http://127.0.0.1:8000.
 - Windows: run `Tamilein-<version>-Setup.exe` from the latest release; start "Playlist-Converter" from the Start menu.
 - Android: install `tamilein-<version>.apk` from the latest release on the phone.
+- iPhone/iPad (iOS 16+): set up SideStore once (LocalDevVPN on the iPhone, iloader on a computer with Windows, macOS or Linux → under "Installers" "SideStore (Stable)"), then in SideStore "Sources" → "+" → add the source https://github.com/BjoernHa/Playlist-Converter-Tamilein/releases/latest/download/altstore-quelle.json and install Playlist-Converter from it ("FREE") — only then do updates show up under "My Apps". Fallback: download `tamilein-<version>.ipa` in Safari → Files → Share → SideStore (no update notices).
 - In the app: Connect → Source → Analyze → Search → Review → Transfer (analyzing and searching start on their own). Language: button at the top right (English/German).
 
 ## Key files
 
 - [README.md](https://github.com/BjoernHa/Playlist-Converter-Tamilein/blob/main/README.md): overview in English and German, install, FAQ
 - [AGENTS.md](https://github.com/BjoernHa/Playlist-Converter-Tamilein/blob/main/AGENTS.md): guide for autonomous agents (install, run, local HTTP API, safety rules)
-- [Latest release](https://github.com/BjoernHa/Playlist-Converter-Tamilein/releases/latest): `tamilein_<version>_all.deb`, `Tamilein-<version>-Setup.exe`, `tamilein-<version>.apk`
+- [Latest release](https://github.com/BjoernHa/Playlist-Converter-Tamilein/releases/latest): `tamilein_<version>_all.deb`, `Tamilein-<version>-Setup.exe`, `tamilein-<version>.apk`, `tamilein-<version>.ipa`, plus `altstore-quelle.json` (source for SideStore/AltStore)
 - [Releases API](https://api.github.com/repos/BjoernHa/Playlist-Converter-Tamilein/releases/latest): machine-readable list of the newest files
 
 ## Optional
@@ -36,3 +38,4 @@
 - [Spicetify](https://spicetify.app): Spotify desktop client extension framework, needed only for Spotify without Premium
 - [data-porter](https://github.com/Prog-Jacob/spicetify-apps): Spicetify app that exports Spotify playlists and imports the file Playlist-Converter generates
 - [song.link / Odesli](https://odesli.co): public service used to look up Spotify track IDs for the Spotify file target
+- [iloader](https://iloader.app): tool for Windows, macOS and Linux that installs SideStore on the iPhone — needed to set up the iPhone app (and again if the pairing file or SideStore expires)

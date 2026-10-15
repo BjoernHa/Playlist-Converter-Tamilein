@@ -31,9 +31,15 @@ curl -s https://api.github.com/repos/BjoernHa/Playlist-Converter-Tamilein/releas
 | Debian / Ubuntu / Linux Mint | `tamilein_<version>_all.deb` | `sudo apt install ./tamilein_<version>_all.deb` (needs `sudo`; the installation sets up a Python environment and needs internet once) |
 | Windows 10/11 | `Tamilein-<version>-Setup.exe` | run it; per-user install, no admin rights |
 | Android 7+ | `tamilein-<version>.apk` | install on the device; the user must allow installs from this source |
+| iPhone/iPad (iOS 16+) | `tamilein-<version>.ipa` | **unsigned** — the user installs it with SideStore (or AltStore Classic) and their free Apple ID; setting up SideStore needs a computer (Windows, macOS or Linux), Wi-Fi and the LocalDevVPN app (steps in [README.md](README.md)). Preferred: in SideStore **Sources** → **+** → add `https://github.com/BjoernHa/Playlist-Converter-Tamilein/releases/latest/download/altstore-quelle.json`, then **FREE** next to Playlist-Converter — only an app installed from this source gets updates under **My Apps**; an `.ipa` shared to SideStore by hand gets none. Not yet tried on a real iPhone — checked in the simulator only. |
 
 Do not install anything without the user's consent, and never use `sudo` on
-their behalf without asking.
+their behalf without asking. On the iPhone, only the user can install: SideStore
+signs with their Apple ID on their device — never ask for their Apple ID password.
+With a free Apple ID each sideloaded app runs 7 days (SideStore refreshes it), at
+most 3 such apps at a time including SideStore. SideStore itself must be opened at
+least every 7 days; if it or the pairing file expires, the user needs the computer
+and iloader again.
 
 ## Run
 
@@ -41,6 +47,9 @@ their behalf without asking.
   the browser; `tamilein --port 9000` uses another port. `tamilein-update`
   installs a newer `.deb`.
 - Windows: Start menu → *Playlist-Converter*.
+- Android, iPhone: open the app. It runs its own server on `127.0.0.1` (port
+  picked by the app, always with an access key) and shows the UI itself; on the
+  iPhone, iOS pauses the app in the background, so long jobs need the app open.
 - The web UI and a JSON API listen on `http://127.0.0.1:8000`.
   `GET /healthz` answers without authentication:
   `{"app": "tamilein", "version": "<version>"}`.
