@@ -29,6 +29,8 @@ top right). License: GPL-3.0-or-later.
 - **Safe:** JSON backup before every transfer; interrupted transfers resume without duplicate playlists.
 - **Spotify without Premium:** *Connect without Premium* uses files — Spotify’s own data export (`my_spotify_data.zip`) or a [data-porter](https://github.com/Prog-Jacob/spicetify-apps) export as source, one data-porter file as target.
 - **Update only:** after loading a playlist file you transferred before, one click appends just the new songs to the existing playlists in the target. Matches you picked by hand are remembered and suggested next time (you still confirm them).
+- **Live overview while searching:** see how many songs are matched, still need review or weren’t found — and decide the first uncertain ones while the search runs.
+- **Follow instead of copy:** within the same service (e.g. Spotify to another Spotify account), playlists you only follow can be followed again instead of rebuilt — you get a list of URLs to follow them; following automatically is being tried in a test version first.
 - Built-in updates without a GitHub login. Four standalone apps: Linux `.deb`, Windows installer (no admin rights), Android `.apk` and iPhone/iPad `.ipa` (no computer needed to run them).
 
 **Install**
@@ -88,6 +90,8 @@ own. A report lists skipped songs.
 - **Sicher:** JSON-Backup vor jeder Übertragung; abgebrochene Übertragungen setzen fort, ohne Playlists doppelt anzulegen.
 - **Nur updaten:** Nach dem Einlesen einer schon einmal übertragenen Playlist-Datei hängt ein Klick nur die neuen Songs an die bisherigen Playlists im Ziel. Von Hand gewählte Zuordnungen werden gemerkt und beim nächsten Mal vorgeschlagen (bestätigt wird weiter von dir).
 - **Spotify ohne Premium:** „Ohne Premium verbinden“ arbeitet mit Dateien — Spotifys eigener Datenexport oder ein data-porter-Export als Quelle, eine Datei für data-porter als Ziel.
+- **Live-Übersicht beim Suchen:** wie viele Songs zugeordnet sind, was du noch prüfen musst und was fehlt — die ersten unsicheren entscheidest du schon während der Suche.
+- **Folgen statt kopieren:** innerhalb desselben Dienstes (etwa Spotify auf ein anderes Spotify-Konto) lassen sich Playlists, denen du nur folgst, wieder folgen statt nachbauen — du bekommst eine Liste mit Links; automatisches Folgen wird erst in einer Testfassung erprobt.
 - Aktualisieren im Programm, ohne GitHub-Anmeldung. Vier eigenständige Programme: Linux-`.deb`, Windows-Installer (ohne Administratorrechte), Android-`.apk` und iPhone/iPad-`.ipa` (zum Benutzen kein Rechner nötig).
 
 **Installieren:** unter **[Releases](../../releases/latest)** die passende

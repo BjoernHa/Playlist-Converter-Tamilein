@@ -24,7 +24,7 @@
 - Windows: run `Tamilein-<version>-Setup.exe` from the latest release; start "Playlist-Converter" from the Start menu.
 - Android: install `tamilein-<version>.apk` from the latest release on the phone.
 - iPhone/iPad (iOS 16+): set up SideStore once (LocalDevVPN on the iPhone, iloader on a computer with Windows, macOS or Linux → under "Installers" "SideStore (Stable)"), then in SideStore "Sources" → "+" → add the source https://github.com/BjoernHa/Playlist-Converter-Tamilein/releases/latest/download/altstore-quelle.json and install Playlist-Converter from it ("FREE") — only then do updates show up under "My Apps". Fallback: download `tamilein-<version>.ipa` in Safari → Files → Share → SideStore (no update notices).
-- In the app: Connect → Source → Analyze → Search → Review → Transfer (analyzing and searching start on their own). Language: button at the top right (English/German).
+- In the app: Connect → Source → Analyze → Search → Review → Transfer (analyzing and searching start on their own). Language: flag button at the top right, left of “?” — tap it, then pick English or German (a new installation starts in English).
 
 ## Key files
 
